@@ -17,7 +17,7 @@ def generate_launch_description():
             output="screen",
             parameters=[{
                 "robot_name":"dummy_1",
-                "thread_sampling_time_sec": 0.01,    
+                "thread_sampling_time_sec": 0.1,    
             }]
         ),
 

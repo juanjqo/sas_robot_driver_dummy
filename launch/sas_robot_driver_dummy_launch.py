@@ -20,7 +20,7 @@ def generate_launch_description():
                 ),
         DeclareLaunchArgument(
             'watchdog_period',
-            default_value='1.5',  # Default value for watchdog_period. (Watchdog disabled)
+            default_value='0.1',  # Default value for watchdog_period. (Watchdog disabled)
             description='Watchdog period in seconds'
         ),
         Node(
