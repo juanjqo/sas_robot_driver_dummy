@@ -127,7 +127,11 @@ void RobotDriverDummy::connect()
  */
 void RobotDriverDummy::disconnect()
 {
-
+    for (int i=0;i<5;i++)
+    {
+        RCLCPP_ERROR_STREAM(node_->get_logger(), "disconnecting...");
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 }
 
 
@@ -152,7 +156,11 @@ void RobotDriverDummy::initialize()
  */
 void RobotDriverDummy::deinitialize()
 {
-
+    for (int i=0;i<5;i++)
+    {
+        RCLCPP_ERROR_STREAM(node_->get_logger(), "deinitializing...");
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 }
 
 
