@@ -63,6 +63,7 @@ int main(int argc, char** argv)
         sas::Configuration configuration;
 
         sas::get_ros_parameter(node, "thread_sampling_time_sec", configuration.thread_sampling_time_sec);
+        sas::get_ros_parameter(node, "topic_prefix", configuration.topic_prefix);
 
 
 

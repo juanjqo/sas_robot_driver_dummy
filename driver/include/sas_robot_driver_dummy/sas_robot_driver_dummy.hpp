@@ -27,6 +27,7 @@
 #include <thread>
 #include <sas_core/sas_robot_driver.hpp>
 #include <sas_robot_driver/sas_robot_driver_client.hpp>
+#include <sensor_msgs/msg/imu.hpp>
 
 using namespace Eigen;
 namespace sas
@@ -35,6 +36,7 @@ namespace sas
 struct Configuration
 {
     double thread_sampling_time_sec;
+    std::string topic_prefix;
 };
 
 
@@ -43,11 +45,8 @@ class RobotDriverDummy: public RobotDriver
 private:
     Configuration configuration_;
 
-    //rclcpp::Subscription<sas_msgs::msg::Heartbeat>::SharedPtr subscriber_hearbeat_;
-    //void _callback_heartbeat(const sas_msgs::msg::Heartbeat& msg);
+    Publisher<sensor_msgs::msg::Imu>::SharedPtr publisher_IMU_state_;
 
-
-    //std::shared_ptr<sas::RobotDriverClient> rdi_;
     std::shared_ptr<rclcpp::Node> node_;
     bool watchdog_enabled_{false};
 
@@ -55,6 +54,7 @@ private:
     std::unique_ptr<Impl> impl_;
 
 
+    void publish_imu(const VectorXd& orientation, const VectorXd& velocity, const VectorXd& acceleration);
 
 public:
 
