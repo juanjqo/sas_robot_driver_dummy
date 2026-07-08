@@ -32,7 +32,7 @@ using namespace Eigen;
 namespace sas
 {
 
-struct DifferentialWheeledRobotConfiguration
+struct Configuration
 {
     double thread_sampling_time_sec;
 };
@@ -41,7 +41,7 @@ struct DifferentialWheeledRobotConfiguration
 class RobotDriverDummy: public RobotDriver
 {
 private:
-    DifferentialWheeledRobotConfiguration configuration_;
+    Configuration configuration_;
 
     //rclcpp::Subscription<sas_msgs::msg::Heartbeat>::SharedPtr subscriber_hearbeat_;
     //void _callback_heartbeat(const sas_msgs::msg::Heartbeat& msg);
@@ -63,8 +63,8 @@ public:
     ~RobotDriverDummy();
 
     RobotDriverDummy(std::shared_ptr<Node> &node,
-                                   const DifferentialWheeledRobotConfiguration &configuration,
-                                   std::atomic_bool* break_loops);
+                     const Configuration &configuration,
+                     std::atomic_bool* break_loops);
 
     VectorXd get_joint_positions() override;
     void set_target_joint_positions(const VectorXd& desired_joint_positions_rad) override;

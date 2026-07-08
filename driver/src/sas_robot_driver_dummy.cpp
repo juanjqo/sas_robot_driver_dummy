@@ -56,7 +56,7 @@ RobotDriverDummy::~RobotDriverDummy()
  * @param break_loops
  */
 RobotDriverDummy::RobotDriverDummy(std::shared_ptr<Node> &node,
-                                                               const DifferentialWheeledRobotConfiguration &configuration,
+                                                               const Configuration &configuration,
                                                                std::atomic_bool *break_loops):
     RobotDriver(break_loops), configuration_(configuration),
     node_{node}
@@ -69,6 +69,28 @@ RobotDriverDummy::RobotDriverDummy(std::shared_ptr<Node> &node,
     joint_limits_ = {joint_limits_min, joint_limits_max};
 
     //rdi_ = std::make_shared<sas::RobotDriverClient>(node_, "/watchdog_commander/");
+
+    // Set the callback using the public method
+
+
+    set_control_loop_callback([this]() {
+
+        // Static local variables - persist between iterations
+        static int iteration_counter = 0;
+        static double accumulated_time = 0.0;
+
+        iteration_counter++;
+        accumulated_time += configuration_.thread_sampling_time_sec;
+
+        if (iteration_counter % 100 == 0) {
+            RCLCPP_INFO_STREAM(node_->get_logger(),
+                               "Iteration: " << iteration_counter
+                                             << ", Accumulated time: " << accumulated_time << "s");
+        }
+
+
+    });
+
 
 }
 
