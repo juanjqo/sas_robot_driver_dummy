@@ -60,9 +60,10 @@ int main(int argc, char** argv)
     {
         RCLCPP_INFO_STREAM_ONCE(node->get_logger(), "::Loading parameters from parameter server.");
 
-        sas::DifferentialWheeledRobotConfiguration configuration;
+        sas::Configuration configuration;
 
         sas::get_ros_parameter(node, "thread_sampling_time_sec", configuration.thread_sampling_time_sec);
+        sas::get_ros_parameter(node, "topic_prefix", configuration.topic_prefix);
 
 
 

@@ -32,6 +32,7 @@ def generate_launch_description():
             parameters=[{
                 "watchdog_period_in_seconds": LaunchConfiguration('watchdog_period'),
                 "watchdog_maximum_acceptable_delay":1.0,
+                "topic_prefix": "test",
                 "thread_sampling_time_sec": 0.002,    
             }]
         ),
