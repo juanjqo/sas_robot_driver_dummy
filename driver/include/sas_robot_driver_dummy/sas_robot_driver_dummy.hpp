@@ -62,7 +62,7 @@ public:
     RobotDriverDummy()=delete;
     ~RobotDriverDummy();
 
-    RobotDriverDummy(std::shared_ptr<Node> &node,
+    RobotDriverDummy(std::shared_ptr<rclcpp::Node> &node,
                      const Configuration &configuration,
                      std::atomic_bool* break_loops);
 

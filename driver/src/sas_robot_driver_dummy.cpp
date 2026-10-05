@@ -117,7 +117,7 @@ void RobotDriverDummy::publish_imu(const VectorXd& orientation, const VectorXd& 
     publisher_IMU_state_->publish(ros_msg_imu);
 }
 
-RobotDriverDummy::RobotDriverDummy(std::shared_ptr<Node> &node,
+RobotDriverDummy::RobotDriverDummy(std::shared_ptr<rclcpp::Node> &node,
                                                                const Configuration &configuration,
                                                                std::atomic_bool *break_loops):
     RobotDriver(break_loops), configuration_(configuration),

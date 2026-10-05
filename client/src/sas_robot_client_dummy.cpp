@@ -55,7 +55,7 @@ RobotClientDummy::~RobotClientDummy()
  * @param configuration
  * @param break_loops
  */
-RobotClientDummy::RobotClientDummy(std::shared_ptr<Node> &node,
+RobotClientDummy::RobotClientDummy(std::shared_ptr<rclcpp::Node> &node,
                                    const RobotClientDummyConfiguration &configuration,
                                    std::atomic_bool *break_loops):
     configuration_(configuration),

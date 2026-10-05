@@ -68,7 +68,7 @@ public:
     RobotClientDummy()=delete;
     ~RobotClientDummy();
 
-    RobotClientDummy(std::shared_ptr<Node> &node,
+    RobotClientDummy(std::shared_ptr<rclcpp::Node> &node,
                                    const RobotClientDummyConfiguration &configuration,
                                    std::atomic_bool* break_loops);
 
