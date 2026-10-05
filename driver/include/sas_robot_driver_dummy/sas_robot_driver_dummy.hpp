@@ -45,7 +45,7 @@ class RobotDriverDummy: public RobotDriver
 private:
     Configuration configuration_;
 
-    Publisher<sensor_msgs::msg::Imu>::SharedPtr publisher_IMU_state_;
+    rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr publisher_IMU_state_;
 
     std::shared_ptr<rclcpp::Node> node_;
     bool watchdog_enabled_{false};
